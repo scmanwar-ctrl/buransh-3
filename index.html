@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buransh</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #B7D9F2;
+    color: #1a2e40;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero Section ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: #0f2a44;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1.4s ease forwards 0.3s;
+  }
+
+  .hero .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-style: italic;
+    font-weight: 400;
+    color: #1a3a5c;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1.4s ease forwards 0.8s;
+  }
+
+  .hero .scroll-hint {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: #2a5a7a;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    opacity: 0;
+    animation: fadeUp 1.4s ease forwards 1.4s;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #2a5a7a, transparent);
+    margin: 0 auto;
+  }
+
+  /* ── Photo Sections ── */
+  .photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .photo-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .photo-section .photo-frame {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .photo-section .photo-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .photo-section .shayari {
+    margin-top: 2rem;
+    text-align: center;
+    max-width: 480px;
+    padding: 0 0.5rem;
+  }
+
+  .photo-section .shayari p {
+    font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+    font-style: italic;
+    font-weight: 400;
+    color: #0f2a44;
+    line-height: 2;
+  }
+
+  .photo-section .shayari p .line {
+    display: block;
+  }
+
+  /* ── Closing Section ── */
+  .closing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem 6rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .closing.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .closing h2 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 400;
+    color: #0f2a44;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .closing .message {
+    max-width: 620px;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    font-style: italic;
+    font-weight: 400;
+    color: #1a3a5c;
+    line-height: 2.2;
+    text-align: left;
+  }
+
+  .closing .message p {
+    margin: 0;
+  }
+
+  .closing .message .section-break {
+    display: block;
+    height: 1.5rem;
+  }
+
+  .closing .farewell {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #1a3a5c;
+    letter-spacing: 0.12em;
+    font-weight: 400;
+  }
+
+  /* ── Spacer ── */
+  .spacer {
+    height: 6vh;
+  }
+
+  /* ── Mobile adjustments ── */
+  @media (max-width: 600px) {
+    .photo-section {
+      padding: 3rem 1.2rem;
+    }
+
+    .photo-section .photo-frame {
+      max-width: 92vw;
+    }
+
+    .photo-section .shayari {
+      max-width: 90vw;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Buransh</h1>
+    <p class="subtitle">
+      Not a confession. Not a question.<br>
+      Just a quiet way of saying — you are beautiful,<br>
+      and someone noticed.
+    </p>
+    <p class="scroll-hint">scroll gently</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Photo 1 -->
+  <section class="photo-section">
+    <div class="photo-frame">
+      <img src="photo1.jpg" alt="Her">
+    </div>
+    <div class="shayari">
+      <p>
+        <span class="line">Tum pehno agar payal to mai le aaunga,</span>
+        <span class="line">Tum lagao agar bindi to mai le aaunga,</span>
+        <span class="line">ke Tum ek baar mango to kuch mai apna sab kuch deke le aaunga</span>
+        <span class="line">aur ye jo chand tare tord ke lane ke hote hai wade</span>
+        <span class="line">ye sab hote h fijul agar phir bhi dekhna ho chand</span>
+        <span class="line">to mai tumhre liye aaina le aaunga!!</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Photo 2 -->
+  <section class="photo-section">
+    <div class="photo-frame">
+      <img src="photo2.jpg" alt="Her">
+    </div>
+    <div class="shayari">
+      <p>
+        <span class="line">Sitaaron se bhari raatein pasand hai,</span>
+        <span class="line">Door se suni uski baatein pasand hai..</span>
+        <span class="line">Taarif ke kaabil hai uski zulfein bhi par,</span>
+        <span class="line">Mujhe jyada uski aankhein pasand hai.</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Photo 3 -->
+  <section class="photo-section">
+    <div class="photo-frame">
+      <img src="photo3.jpg" alt="Her">
+    </div>
+    <div class="shayari">
+      <p>
+        <span class="line">Tumhara chehra chand sa hai, or aankhe jese koi noor...</span>
+        <span class="line">Tumhare tareef hum kya hi kare tumhare aage toh fika hai kohinoor...!!</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Photo 4 -->
+  <section class="photo-section">
+    <div class="photo-frame">
+      <img src="photo4.jpg" alt="Her">
+    </div>
+    <div class="shayari">
+      <p>
+        <span class="line">Log mujhe puchte hai tune usme aisa kya dekha....</span>
+        <span class="line">Maine kaha jab use dekha uske baad kuch nhi dekha....!!</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Closing -->
+  <section class="closing">
+    <h2>You Are Not Mine</h2>
+    <div class="message">
+      <p>
+        And I want to say that first, clearly and without hesitation.<br>
+        Not because it hurts to accept, but because truth deserves respect.
+      </p>
+      <span class="section-break"></span>
+      <p>
+        I cannot call you mine, and I never try to.<br>
+        Your life, your heart, your story — they belong exactly where they already are.<br>
+        This note isn't an attempt to step into that space.<br>
+        It isn't a question, a request, or a hope disguised as words.
+      </p>
+      <span class="section-break"></span>
+      <p>
+        It is simply honesty.<br>
+        I love you — quietly, carefully, and without expectation.<br>
+        The kind of love that does not ask to be chosen,<br>
+        the kind that understands boundaries and still finds meaning in admiration.<br>
+        To me, you are like a sunflower.<br>
+        A sunflower doesn't claim the sun,<br>
+        yet it turns toward it every day without complaint.<br>
+        It doesn't compete for light,<br>
+        doesn't ask for attention,<br>
+        it just blooms — honestly and fully.
+      </p>
+      <span class="section-break"></span>
+      <p>
+        That's how you exist.<br>
+        There is something about the way you are —<br>
+        the way you smile without trying,<br>
+        the way your presence softens a moment,<br>
+        the way silence feels less heavy when you're near.<br>
+        You don't arrive loudly,<br>
+        yet your absence is always noticeable.<br>
+        If I were to count the good in you,<br>
+        I would lose track.<br>
+        There are a hundred things — maybe more —<br>
+        the small kindnesses, the calm you carry,<br>
+        the warmth that follows you without you realizing it.<br>
+        And no matter how closely I look,<br>
+        I don't find a single thing to call a flaw.<br>
+        Not because you are flawless,<br>
+        but because everything about you feels human in the most beautiful way.<br>
+        Some people don't need balance between good and bad —<br>
+        they are simply good.
+      </p>
+      <span class="section-break"></span>
+      <p>
+        I know your happiness is tied to a life that isn't mine to touch.<br>
+        And I accept that — fully.<br>
+        There is no resentment here, no sadness meant to be shared.<br>
+        Only respect.
+      </p>
+      <span class="section-break"></span>
+      <p>
+        This love doesn't want to interfere.<br>
+        It doesn't want answers or reassurance.<br>
+        It doesn't need to be returned.<br>
+        It only exists because you exist.
+      </p>
+      <span class="section-break"></span>
+      <p>
+        If this note ever reaches you,<br>
+        I hope it feels light — not heavy.<br>
+        I hope it feels like appreciation, not pressure.<br>
+        And if you ever choose to forget these words,<br>
+        that's okay too.
+      </p>
+      <span class="section-break"></span>
+      <p>
+        Wherever you are,<br>
+        whoever you laugh with,<br>
+        whatever path you continue on —<br>
+        I hope you keep blooming.<br>
+        Bright, warm, and honest.<br>
+        Like a sunflower.<br>
+        Always facing the light.<br>
+        Asking nothing in return.
+      </p>
+    </div>
+    <p class="farewell">— with nothing but respect</p>
+  </section>
+
+  <div class="spacer"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var sections = document.querySelectorAll('.photo-section, .closing');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      });
+      sections.forEach(function (section) {
+        observer.observe(section);
+      });
+    });
+  </script>
+
+</body>
+</html>
